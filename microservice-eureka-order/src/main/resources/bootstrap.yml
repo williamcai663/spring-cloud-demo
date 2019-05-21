@@ -1,0 +1,34 @@
+server:
+  port: 7903
+spring:
+  application:
+    name: microservice-eureka-order
+    service-id: config-server
+  cloud:
+    config:
+      enabled: false
+      name: server-config
+      profile: test
+      discovery:
+        enabled: false
+        service-id: config-server
+    inetutils:
+      preferred-networks:
+        - 192.168
+eureka:
+  client:
+    service-url:
+      #      defaultZone: http://10.90.1.226:9001/eureka/
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+management:
+  security:
+    enabled: false
+#  context-path: /fast-amigo
+feign:
+  httpclient:
+    enabled: false
+  okhttp:
+    enabled: true
